@@ -1,0 +1,240 @@
+\documentclass[a4paper]{article}
+
+\usepackage[inner=2.0cm,outer=2.0cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage[colorlinks=true, urlcolor=blue,  linkcolor=blue, citecolor=blue]{hyperref}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[margin=4cm]{caption}
+
+\setlength\parindent{0pt}
+\setlength\parskip{0.5em}
+
+\theoremstyle{definition}
+\newtheorem{answer}{Answer}
+
+\begin{document}
+
+
+\begin{center}
+    {\Large Discrete Mathemetics Quiz 1: Submission}\\
+    \vspace*{3mm}
+    {\Large Shrey Tripathi IMT2019084}\\
+\end{center}
+
+\vspace*{2em}
+
+\begin{answer}\
+    \begin{enumerate}
+        \item The set of predicates using which the given set of statements can be expressed as compound propositions are:
+        \begin{enumerate}
+            \item $P(i, j) = True$ if $Minefield(i, j)$ contains a mine
+            \item $Q(i_1, j_1, i_2, j_2) = True$ if $Minefield(i_1, j_1)$ and $Minefield(i_2, j_2)$ are adjacent cells
+            \item $R(i, j, x) = True$ if $Minefield(i, j)$ contains x as the number inside it
+        \end{enumerate}
+        \item From the predicates defined above, in the example game state defined, we see that the neighbours of the cell $(2, 2)$ are $(1, 1)$, $(1, 2)$, $(1, 3)$, $(2, 1)$, $(2, 3)$, $(3, 1)$, $(3, 2)$ and $(3, 3)$, out of which $(1, 1)$, $(1, 2)$, $(2, 1)$, $(3, 1)$ and $(3, 2)$ do not contain a mine.\\
+        Now, if we take a look at the cell $(2, 1)$, the following predicates are defined:\begin{enumerate}
+            \item $Q(2, 1, 2, 2) = True$
+            \item Similarly, $Q(2, 1, 1, 0)$, $Q(2, 1, 1, 1)$, $Q(2, 1, 1, 2)$, $Q(2, 1, 2, 0)$, $Q(2, 1, 3, 0)$, $Q(2, 1, 3, 1)$, $Q(2, 1, 3, 2)$ are all True.
+            \item $P(1, 0), P(1, 1), P(1, 2), P(2, 0), P(3, 0), P(3, 1)$ and $P(3, 2)$ are all $False$ since they do not contain any mine.
+            \item $R(2, 1, 1) = True$ since the cell $(2, 1)$ contains the number 1. 
+        \end{enumerate} From $(d)$, only one neighbor of the cell $(2, 1)$ contains a mine.\\
+        Now, from $(c)$, only one neighbor of $(2, 1)$ is left which \textit should contain a mine, and that is $(2, 2)$.\\
+        Hence, proved that the \textbf{cell $(2, 2)$ contains a mine}.
+    \end{enumerate} 
+\end{answer}
+\vspace*{2em}
+\begin{answer}\
+    \begin{enumerate}
+        \item Given argument form:\\
+        $\begin{array}{rl}
+                        & \exists x \; (P(x) \; \land \; \lnot Q(x)) \\
+                        & \forall x \; (\lnot R(x) \; \rightarrow \; \lnot P(x)) \\
+                        & \forall x \; (R(x) \; \rightarrow \; S(x)) \\
+                        \cline{2-2}
+            \therefore & \exists x \; (S(x) \; \land \; \lnot Q(x)) \\
+                  \end{array}$\\\\
+        The clauses can be simplified as:\\
+        $\begin{array}{rl}
+                        & C_1: \exists x \; (P(x) \; \land \; \lnot Q(x)) \\
+                        & C_2: \forall x \; (R(x) \; \land \; \lnot P(x)) \\
+                        & C_3: \forall x \; (\lnot R(x) \; \land \; S(x)) \\
+                  \end{array}$\\\\
+        $C_1$ and $C_2$ can be simplified as:\\
+        $\begin{array}{rl}
+                        &C_4: \exists x \; (R(x) \land \lnot Q(x)) \\
+                  \end{array}$\\\\
+        Further, $C_3$ and $C_4$ can be simplified as:\\
+        $\begin{array}{rl}
+                        &C_5: \exists x \; (S(x) \land \lnot Q(x)) \\
+                  \end{array}$\\\\
+                  which is what we needed to prove.\\\\
+        \textbf{Hence, proved}.
+        
+        \item Argument form:\\
+        $\begin{array}{rl}
+                        & \lnot(p \land \lnot q) \lor \lnot(\lnot s \land \lnot t) \\
+                        & \lnot (t \lor q) \\
+                        & u \rightarrow (\lnot t \rightarrow (\lnot s \land p))\\
+                        \cline{2-2}
+                        \therefore & \lnot u \\
+        \end{array}$\\\\
+        The clauses in the given argument form are:\\
+        $\begin{array}{rl}
+                        & C_1: \lnot(p \land \lnot q) \lor \lnot(\lnot s \land \lnot t) \\
+                        & C_2: \lnot (t \lor q) \\
+                        & C_3: u \rightarrow (\lnot t \rightarrow (\lnot s \land p))\\
+        \end{array}$\\\\
+        They can be simplified as:\\
+        $\begin{array}{rl}
+                        & C_1: (\lnot p \lor q) \lor (s \lor t) \implies C_1: (\lnot p \lor s) \lor (q \lor t)\\
+                        & C_2: \lnot (t \lor q) \implies C_2: \lnot (q \lor t)\\
+                        & C_3: \lnot u \lor (t \lor (\lnot s \land p)) \implies C_3: (\lnot u \lor t) \lor \lnot (\lnot p \lor s)\\
+        \end{array}$\\\\
+        $C_1$ and $C_2$ can be combined to get $C_4: \lnot p \lor s$\\
+        Now, $C_3$ and $C_4$ can be combined to get $C_5: \lnot u \lor t \implies C_5: \lnot u$\\\\
+        \textbf{Hence, proved.}
+    \end{enumerate}
+\end{answer}
+\vspace*{2em}
+\begin{answer}
+    Given $n$ elements,\\
+    $x_i, \; 1 \le i \le n$ denotes the propositional variable which is \textit{true} if the $i$-th element is in the set $\mathcal{X}$.\\
+    $y_i, \; 1 \le i \le n$ denotes the propositional variable which is \textit{true} if the $i$-th element is in the set $\mathcal{Y}$
+    \begin{enumerate}
+        \item Compound statement for $\boldsymbol{S_1(k)}$ is:\\
+        $\exists \; x_1, x_2, x_3, ..., x_k$ such that $\bigwedge\limits_{i = 1}^k x_i \land \forall j, \left(x_j \rightarrow \bigvee\limits_{i = 1}^k i \ge j\right)$
+        \item Compound statement for $\boldsymbol{S_2(k)}$ is:\\
+        $\exists \; x_1, x_2, x_3, ..., x_k$ such that $\bigwedge\limits_{i = 1}^k x_i \land \forall j, \left(x_j \rightarrow \bigvee\limits_{i = 1}^k i = j\right)$
+        \item Compound statement for $\boldsymbol{S_3}$ is:\\
+        $\left(\forall i : y_i \rightarrow x_i\right) \land \left(\exists i, x_i \land \lnot y_i\right)$
+        \item Compound statement for $\boldsymbol{S_4}$ is:\\ 
+        $\left(\exists i : x_i \land y_i\right) \land \left(\forall i, j : x_i \land y_j \rightarrow i = j\right)$
+    \end{enumerate}
+    
+\end{answer}
+\vspace*{2em}
+\begin{answer}\
+    \begin{enumerate}
+        \item Given statement: $a^n = 1$, $\forall n \ge 0 \land n \in \mathbb{Z}$ and $\forall a \neq 0 \land a \in \mathbb{R}$
+        \begin{itemize}
+            \item \textbf{Predicate}: $P(n): a^i = 1$, $\forall i$ such that $0 \le i \le n$
+            \item  \textbf{Base case}: $P(0)$ is true since $a^0 = 1$, $\forall a \neq 0 \land a \in \mathbb{R}$.
+            \item \textbf{Inductive hypothesis}: Let $P(k)$ be true.\\
+            Hence, $P(k): a^i = 1, \forall i$ such that $0 \le i \le k$
+            \item \textbf{Inductive step}: We have
+                    \begin{equation*}
+                        a^{k+1} = \frac{a^k \cdot a^k}{a^{k-1}}
+                    \end{equation*}
+            Here, $a^k = 1$ from the inductive hypothesis, but $a^k = 1$ \textbf{does not imply} that $a^{k-1} = 1$ since we have not yet proved the inductive step from the inductive hypothesis.\\
+            This is where the given proof goes wrong.\\\\
+        \end{itemize}
+            \textbf{Hence, the given proof is wrong}.
+        
+        \item Let $A(n) = \frac{1}{2} \cdot \frac{3}{4} \ldots \frac{2n - 1}{2n}$\\\\
+        We need to prove that $A(n) \le \frac{1}{\sqrt{3n}}$\\
+        Using Principal of Mathematical Induction,\\
+        For $n = 1$, we have $A(1) = \frac{1}{2} < \frac{1}{\sqrt{3.1}}$, since $\sqrt{3} < 2$\\\\
+        Now, let us assume that the statement is true for $n = k$.
+        So,\\
+        $A(k) \le \frac{1}{\sqrt{3k}} \implies A(k) \le \frac{1}{\sqrt{3k + 1}}$\space\space\space\space (1)\\\\
+        We now have to prove the statement for $n = k + 1$\\
+        Now, $A(k + 1) = A(k) \cdot \frac{2k + 1}{2k + 2}$\space\space\space\space (2)\\\\
+        From equations 1 and 2, \\
+        $A(k + 1) \le \frac{2k + 1}{2k + 2} \cdot \frac{1}{\sqrt{3k + 1}}$\space\space\space\space (3)\\\\
+        Squaring the RHS of equation 3, \\
+        $\left(\frac{2k + 1}{2k + 2} \cdot \frac{1}{\sqrt{3k + 1}}\right)^2 = \frac{(2k + 1)^2}{(2k + 2)^2 \cdot (3k + 1)}$\\\\
+        $\implies = \frac{(2k + 1)^2}{12k^3 + 28k^2 + 20k + 4} = \frac{(2k + 1)^2}{(12k^3 + 28k^2 + 19k + 4) + k}$\\\\
+        $\implies = \frac{(2k + 1)^2}{(2k + 1)^2 \cdot (3k + 4) + k} \leq \frac{(2k + 1)^2}{(2k + 1)^2 \cdot (3k + 4)} = \frac{1}{3(k + 1) + 1}$\\\\
+        $\implies \left(\frac{2k + 1}{2k + 2} \cdot \frac{1}{\sqrt{3k + 1}}\right)^2 \leq \frac{1}{3(k + 1) + 1}$\\\\
+        $\implies A(k + 1) \leq \frac{1}{\sqrt{3(k + 1) + 1}} \leq \frac{1}{\sqrt{3(k + 1)}}$\\\\
+        Hence, the statement is true for $n = k + 1$\\
+        \textbf{Hence, the given statement is true}
+        
+    \end{enumerate}
+    
+\end{answer}
+\vspace*{2em}
+\begin{answer}\
+    \begin{enumerate}
+        \item It is given that $\frac{3}{20}x^5 - \frac{1}{12}x^4 - \frac{1}{6}x^3 - \frac{1}{2}x^2
+            + 2x - 1 \geq 0$, and we have to prove that $x \geq 0$.\\\\
+            Let $P = \frac{3}{20}x^5 - \frac{1}{12}x^4 - \frac{1}{6}x^3 - \frac{1}{2}x^2
+            + 2x - 1$\\
+            Let us assume, on the contrary, that $x < 0$.\\
+            So, we can say that $x = -a, \forall a \in \mathbb{R}^+$\\
+            Hence, since $P \geq 0$,\\
+            $\implies - \frac{3}{20}a^5 - \frac{1}{12}a^4 + \frac{1}{6}a^3 - \frac{1}{2}a^2
+            - 2a - 1 \geq 0$\\\\
+            $\implies - \frac{3}{20}a^5 - \left( \frac{1}{12}a^4 - \frac{1}{6}a^3 + \frac{1}{2}a^2 \right)- 2a - 1 \geq 0$ \space\space\space\space$(1)$\\\\
+            Now, let $y = \frac{1}{12}a^4 - \frac{1}{6}a^3 + \frac{1}{2}a^2$\\\\
+            Now, $\forall a \in \mathbb{R}$, $y = \frac{1}{12}a^4 - \frac{1}{6}a^3 + \frac{1}{2}a^2 = \frac{1}{12}a^2 \left(a^2 - 2a + 6\right)$\\\\
+            $\implies y = \frac{1}{12}a^2 \left(\left(a - 1\right)^2 + 5\right)$, which is always $\geq 0$\\\\
+            Hence, $y \geq 0$\\\\
+            So, equation $1$ becomes:\\
+            $- \frac{3}{20}a^5 - y - 2a - 1 \geq 0$, which is a contradiction because $- \frac{3}{20}a^5 - y - 2a - 1$ is always $< 0$ for our considered $a$ and $y$.\\
+            Hence, our assumption was wrong.\\
+            Hence \textbf{the given statement is correct}, that is, if $\frac{3}{20}x^5 - \frac{1}{12}x^4 - \frac{1}{6}x^3 - \frac{1}{2}x^2
+            + 2x - 1 \geq 0$, then $x \geq 0 ,\space \forall x \in \mathbb{R}$
+        \item Given that $a, b, c, d, e \in \mathbb{R}$ and $ax^2 + (c + b)x + e + d = 0$\\
+        Suppose it's roots are $\alpha$ and $\beta$, then\\\\
+        $\alpha + \beta = - \frac{\left(b + c\right)}{a}$ and $\alpha \beta = \frac{\left(e + d\right)}{a}$\\\\
+        Since the equation has roots greater than $1$,
+        $\alpha > 1$ and $\beta > 1$\\
+        So, adding and multiplying these respectively, $\alpha + \beta > 2$ and $\alpha \beta > 1$\\
+        Putting the values of $\alpha + \beta$ and $\alpha \beta$ respectively, we get:\\\\
+        $- \frac{\left(b + c\right)}{a} > 2$ and $\frac{e + d}{a} > 1$ \space\space\space\space(2)\\\\
+        Now, we have $2$ cases:
+        \begin{enumerate}
+            \item $\boldsymbol{a \geq 0}$: If $a \geq 0$, from equation 2, we get:\\\\
+            $- \left(b + c\right) > 2a$ and $\left(e + d\right) > a$\\
+            $\implies \left(b + c\right) < -2a$ and $\left(e + d\right) > a$\\
+            Taking marginal values, $(b + c + d + e) = -a$\space\space\space\space(3)\\\\
+            Now, if we put $x = 1$ in the expression $P = ax^4 + bx^3 + cx^2 + dx + e$, we get\\
+            $P = a + b + c + d + e$\\
+            From equation 3, \\
+            $P = a + b + c + d + e = a - a = 0$\\\\
+            Hence, $ax^4 + bx^3 + cx^2 + dx + e$ has a real root $1$.
+            \item $\boldsymbol{a < 0}$: If $a < 0$, from equation 2, we get:\\\\
+            $- \left(b + c\right) < 2a$ and $\left(e + d\right) < a$\\
+            $\implies \left(b + c\right) > -2a$ and $\left(e + d\right) < a$\\
+            Taking marginal values, $(b + c + d + e) = -a$\space\space\space\space(4)\\\\
+            Now, if we put $x = 1$ in the expression $P = ax^4 + bx^3 + cx^2 + dx + e$, we get\\
+            $P = a + b + c + d + e$\\
+            From equation 4, \\
+            $P = a + b + c + d + e = a - a = 0$\\\\
+            Hence, $ax^4 + bx^3 + cx^2 + dx + e$ has a real root $1$.
+            \end{enumerate}
+        \textbf{Hence, $\boldsymbol{ax^4 + bx^3 + cx^2 + dx + e}$ has atleast one real root}. 
+    \end{enumerate}
+\end{answer}
+\vspace*{2em}
+\begin{answer}
+    It is given that a house is infected in the next time step if either
+    \begin{itemize}
+        \item The house was previously infected or
+        \item The house has at least two neighbours that were already infected.
+    \end{itemize}
+    Since a new house is infected only when 2 of it's neighbours are infected, let us consider the number of edges with exactly one infected house from both the houses that edge is connecting.\\
+    Let this number be $k$.\\
+    Let $P(x)$ be the proposition that after $x$ time steps, the number $k = A$(some constant)\\
+    We will now apply \textit{Induction} on $P(x)$:
+    \begin{itemize}
+        \item \textbf{Base Case}: $P(0)$ is $true$, that is, after $0$ time steps (at the beginning), $k = A$, where $A < n$.
+        \item \textbf{Inductive Hypothesis}: Let us assume that $P(x)$ is $true$, where $x \ge 0$. Hence, $k \le A$ after $x$ steps.
+        \item \textbf{Inductive Step}: Now, $k$ can only change after the step $x + 1$ if there are some newly infected houses.\\
+        By the given rules, a newly-infected house has atleast 2 previously infected houses.\\
+        So, $k$ is decreased by atleast 2 and is increased by atmost 2.\\
+        $\therefore k$ cannot increase after the step $x + 1$.\\
+        $\therefore P(x) \implies P(x + 1), \forall x \ge 0$\\
+       \end{itemize}
+        \textbf{Hence, proved that if fewer than n houses
+in the city are initially infected, the whole city will never be completely infected, by $\boldsymbol{Mathematical \; Induction}$.}
+    
+    
+\end{answer}
+
+
+\end{document}
+
