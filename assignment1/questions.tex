@@ -1,0 +1,193 @@
+\documentclass[a4paper]{article}
+
+\usepackage[inner=2.0cm,outer=2.0cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage[colorlinks=true, urlcolor=blue,  linkcolor=blue, citecolor=blue]{hyperref}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[margin=4cm]{caption}
+
+\setlength\parindent{0pt}
+\setlength\parskip{0.5em}
+
+\theoremstyle{definition}
+\newtheorem{question}{Question}
+
+% hint for questions
+\newcommand{\qhint}[1]{{%
+    \begin{center}
+        \scriptsize \textbf{Hint:} #1
+    \end{center}}}
+% marks for each question
+\newcommand{\qmarks}[1]{{\hspace*{\fill} [#1 marks]}}
+
+\newcommand{\CommentNP}[1]{\textcolor{blue}{(Nikhil: #1)}}
+\newcommand{\CommentAH}[1]{\textcolor{red}{(Aditya: #1)}}
+\newcommand{\CommentAC}[1]{\textcolor{green}{(Ashish: #1)}}
+
+
+\begin{document}
+\begin{center}
+    {\Large CS 201: Discrete Mathematics}\\
+    {\Large Quiz 1}\\
+    {Maximum Marks: 50}
+\end{center}
+\vspace*{4mm}
+
+\textbf{Instructions}
+\begin{enumerate}
+    \itemsep0em
+    \item Any result stated or proved in the class or tutorial can be used without repeating the proof.
+    \item State all references used other than the class slides, problem sets and the textbooks.
+\end{enumerate}
+\vspace{2em}
+
+\begin{question}
+    The Minesweeper game consists of a minefield represented by a rectangular grid where each cell can be cleared or uncovered by clicking on it.
+    If a cell containing a mine is clicked, the game ends.
+    If the cell does not contain a mine, a number between 0 and 8 appears indicating the number of adjacent cells (including diagonally-adjacent) containing mines.
+    An example of a game state is given in Figure~\ref{fig:minesweeper_game_state}.
+
+    \begin{figure}[h]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|c|c|c|}
+	    \hline
+	    0 & 0 & 1 & & & & & \\
+	    \hline
+	    0 & 1 & 2 & & & & & \\
+	    \hline
+	    0 & 1 & & & & & & \\
+	    \hline
+	    0 & 2 & 3 & & & & & \\
+	    \hline
+	    0 & 1 & & & 2 & 2 & 1 & \\
+	    \hline
+	    0 & 2 & 3 & 3 & 1 & 1 & & \\
+	    \hline
+	    0 & 1 & & 1 & 0 & 1 & 2 & \\
+	    \hline
+	    0 & 1 & 1 & 1 & 0 & 0 & 1 & \\
+	    \hline
+	\end{tabular}
+	\caption{A sample minesweeper game state. Empty cells correspond to those cells that have not been clicked.}%
+	\label{fig:minesweeper_game_state}
+    \end{figure}
+
+    In the following questions we try to capture some aspects of the Minesweeper game through formal logic.
+    You are required to first define a set of predicates using which the following questions can be answered i.e., these predicates constitute a formal language for Minesweeper.
+
+    \begin{enumerate}
+	    \item Clearly define and state a set of predicates using which the following statements can be expressed as compound propositions.
+		\begin{enumerate}
+			\item There are exactly $n$ mines on the minefield.
+			\item If a cell contains the number $1$, then there is exactly one mine in the adjacent cells.
+
+			\qmarks{3 + 2 = 5}
+		\end{enumerate}
+
+	    \item Using the predicates defined in the previous sub-part, formally show that there must be a mine in the cell $(2, 2)$ (indexing from $0$) for the game state shown in Figure~\ref{fig:minesweeper_game_state}.
+
+		\qmarks{5}
+    \end{enumerate}
+\end{question}
+
+\begin{question}\
+    \begin{enumerate}
+	\item Use \textit{rules of inference} to prove the following arguments are valid:
+
+		  $\begin{array}{rl}
+			& \exists x \; (P(x) \; \land \; \lnot Q(x)) \\
+			& \forall x \; (\lnot R(x) \; \rightarrow \; \lnot P(x)) \\
+			& \forall x \; (R(x) \; \rightarrow \; S(x)) \\
+			\cline{2-2}
+            \therefore & \exists x \; (S(x) \; \land \; \lnot Q(x)) \\
+		  \end{array}$
+
+	  \item Use \textit{propositional resolution} to prove the following:
+
+		  $\begin{array}{rl}
+			& \lnot(p \land \lnot q) \lor \lnot(\lnot s \land \lnot t) \\
+			& \lnot (t \lor q) \\
+			& u \rightarrow (\lnot t \rightarrow (\lnot s \land p))\\
+			\cline{2-2}
+			\therefore & \lnot u \\
+		  \end{array}$
+    \qmarks{2 + 3 = 5} % Incorrectly placed to fit into same page
+    \end{enumerate}
+\end{question}
+
+\begin{question}
+    Given $n$ elements, let $x_i, \; 1 \le i \le n$ be the propositional variable which is true if the $i$-th element is in the set $\mathcal{X}$.
+    Similarly, let $y_i, \; 1 \le i \le n$ be true if the $i$-th element is in the set $\mathcal{Y}$.
+    Give compound statements to express the following:
+
+    \begin{enumerate}
+	\item $S_1(k)$: There are at most $k$ elements in $\mathcal{X}$ where $k \ge 0$.
+	\item $S_2(k)$: There are exactly $k$ elements in $\mathcal{X}$ where $k \ge 0$.
+	\item $S_3$: Every element in $\mathcal{Y}$ is also in $\mathcal{X}$ but $\mathcal{Y} \neq \mathcal{X}$ i.e., $\mathcal{Y}$ is a proper subset of $\mathcal{X}$.
+	\item $S_4$: There is exactly one common element between $\mathcal{X}$ and $\mathcal{Y}$.
+    \end{enumerate}
+    \qmarks{3 + 2 + 3 + 2 = 10}
+\end{question}
+
+\begin{question}\
+    \begin{enumerate}
+	\item Discuss the error in the following proof by strong induction for the statement $a^n = 1$, $\forall n \ge 0 \land n \in \mathbb{Z}$ and $\forall a \neq 0 \land a \in \mathbb{R}$.
+
+	    Proof:
+	    \begin{itemize}
+		\item Let $P(n)$ be the predicate $a^i = 1$, $\forall i \; 0 \le i \le n$.
+		\item \textbf{Base case}: $P(0)$ is clearly true since $a^0 = 1$, $\forall a \neq 0 \land a \in \mathbb{R}$.
+		\item \textbf{Inductive hypothesis}: Let $P(k)$ be true.
+		\item \textbf{Inductive step}: We have
+		    \begin{equation*}
+			a^{k+1} = \frac{a^k \cdot a^k}{a^{k-1}} = 1
+		    \end{equation*}
+		    where the second equality follows from the inductive hypothesis.
+		    We have thus shown that $a^{k+1} = 1$ which when combined with $P(k)$ implies $P(k+1)$.
+		    Therefore, from induction, $P(n)$ holds $\forall n \in \mathbb{Z}$.
+	    \end{itemize}
+
+        \item Prove that
+            \begin{equation*}
+                \frac{1}{2} \cdot \frac{3}{4} \ldots \frac{2n - 1}{2n} \le \frac{1}{\sqrt{3n}}
+            \end{equation*}
+    \end{enumerate}
+
+    \qmarks{2 + 3 = 5}
+\end{question}
+
+\begin{question}\
+    \begin{enumerate}
+        \item If $\frac{3}{20}x^5 - \frac{1}{12}x^4 - \frac{1}{6}x^3 - \frac{1}{2}x^2
+            + 2x - 1 \geq 0$, then show that $x \geq 0$.
+        \item If $a, b, c, d, e$ are real numbers such that the equation $ax^2 + (c + b)x + e + d = 0$ has real roots greater than 1, show that the equation $ax^4 + bx^3 + cx^2 + dx + e$ has at least one real root.
+    \end{enumerate}
+    \qmarks{5 + 5 = 10}
+\end{question}
+
+\begin{figure}[b]
+    \centering
+    \includegraphics[scale=0.5]{../figures/house_simulation.png}
+    \caption{Change in simulation state across two time steps}\label{fig:house_simulation}
+\end{figure}
+\begin{question}
+    Alice is trying to understand the spread of COVID-{19} in a city through simulations.
+    The city is represented by a $n \times n$ grid where each cell corresponds to a house.
+    Each house can either be \textit{infected} or \textit{healthy} (assume for this question that all members of the house are either infected or healthy).
+    Two houses are \textit{neighbours} if they share an edge on the grid i.e., each house has at most four neighbours.
+    The simulation starts with a few of the houses initially infected and the infection spreads at every time step.
+    A house is infected in the next time step if either
+    \begin{itemize}
+	\item The house was previously infected or
+	\item The house has at least two neighbours that were already infected.
+    \end{itemize}
+
+    The change in simulation state for two time steps are are shown in Figure~\ref{fig:house_simulation}.
+    Prove that if fewer than $n$ houses in the city are initially infected, the whole city will never be completely infected.
+
+    \qmarks{10}
+\end{question}
+
+\end{document}
