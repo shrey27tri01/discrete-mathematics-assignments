@@ -1,0 +1,286 @@
+\documentclass[a4paper]{article}
+
+\usepackage[inner=2.0cm,outer=2.0cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage[colorlinks=true, urlcolor=red,  linkcolor=blue, citecolor=blue]{hyperref}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{changepage}
+\usepackage{comment}
+
+\setlength\parindent{0pt}
+\setlength\parskip{0.5em}
+
+% ==== Environments ====
+% It is recommended to not change the environment definitions.
+\newcounter{solution}
+\newcounter{subsolution}[solution]
+\newcommand{\solution}{\section*{Solution \stepcounter{solution}\arabic{solution}}}
+\newcommand{\subsolution}{\paragraph{(\protect\stepcounter{subsolution}\arabic{subsolution})}}
+\newtheorem{claim}{Claim}[solution]
+
+% ==== Custom Commands ====
+% It is recommended to not change the definitions of existing commands.
+\newcommand{\homeworktitle}[2]{\begin{center}
+    \framebox{\begin{minipage}{0.9\textwidth}
+        \textbf{CS 201: Discrete Mathematics} \hspace*{\fill} \today
+        \vspace{2mm}
+        \begin{center}
+            {\Large #2}
+        \end{center}
+        \vspace{2mm}
+        \textit{Instructor: {\rm Prof.\ Ashish Choudhury}} \hspace*{\fill} #1
+    \end{minipage}}
+\end{center}
+\vspace*{4mm}}
+
+% ==== Custom Math Commands ====
+% This is just to get you started. Feel free to update or add as per your convenience.
+\newcommand{\set}[1]{\ensuremath{\{ #1 \}}}
+\newcommand{\setsize}[1]{\ensuremath{| #1 |}}
+\newcommand{\powerset}[1]{\ensuremath{\mathcal{P}(#1)}}
+\newcommand{\sunn}{\ensuremath{\cup}} % set union
+\newcommand{\sint}{\ensuremath{\cap}} % set intersection
+\newcommand{\posintset}{\ensuremath{\mathbb{Z}^{+}}}
+\newcommand{\universalset}{\ensuremath{\mathcal{U}}}
+\newcommand{\ntrlleset}[1]{{\ensuremath{\mathbb{N}_{\le {#1}}}}}
+\newcommand{\funcdef}[3]{\ensuremath{{#1}: {#2} \rightarrow {#3}}}
+
+\begin{document}
+% Replace the name, rollnumber and title of the document.
+\homeworktitle{Shrey Tripathi (IMT2019084)}{Quiz 2}
+
+\begin{comment}
+\solution{}
+The \verb|\solution| command can be used to indicate the beginning of a solution to a new problem.
+
+\begin{claim}
+    Claims can be used for smaller, clearly defined results to improve the flow of the solution.
+\end{claim}
+\begin{proof}
+    As the name suggests, the proof environment is used for writing proofs for claims (and other theorem environments).
+\end{proof}
+
+\setcounter{solution}{3}
+\solution{}
+The solution numbering can be changed by using the \verb|\setcounter{solution}{<value>}| command.
+
+\solution{}
+\subsolution{} The \verb|\subsolution| command can be used for writing solutions to sub-problems.
+\end{comment}
+
+I hereby declare that the following solutions are a result of my own work, that no part of any of the solutions have been copied from any source on the Internet or any other student's submission, and that I have not allowed anyone to copy my work.
+
+\setcounter{solution}{0}
+\solution{}
+$F$ is the set of all functions $f:\ \mathbb{N}_{0}\ \rightarrow\ \mathbb{R}^{+}\ $. \\
+$f\ =\ \Theta (g)$ for $f$ and $g$ iff $\exists\ c_{1}, c_{2}, n_{0}\ \in\ \mathbb{R}^{+} $ such that $0\ \leq\ c_{1}g(n)\ \leq\ f(n)\ \leq\ c_{2}g(n)\ \forall\ n\ \geq\ n_{0}$ \\
+$f\ =\ \mathcal{O}(g)$ for $f$ and $g$ iff $\exists\ c,n_{0}\ \in\ \mathbb{R}^{+}\ $ such that $0\ \leq\ f(n)\ \leq\ cg(n)\ \forall\ n\ \geq\ n_{0}$ \\\\
+Relation $R_{\Theta}$ is defined on $F$ as $(f,g)\ \in\ R_{\Theta}$ iff $f\ =\ \Theta(g)$ \\
+Relation $R_{\mathcal{O}}$ is defined on $F$ as $(f,g)\ \in\ R_{\mathcal{O}}$ iff $f\ =\ \mathcal{O}(g)$ 
+\subsolution{}
+\textbf{To prove:} $R_{\Theta}$ is an equivalence relation
+\begin{adjustwidth}{0.9cm}{}
+\begin{proof}
+We will have to prove that $R_{\Theta}$ is \textit{reflexive}, \textit{symmetric} and \textit{transitive}.
+\begin{enumerate}
+	\item Taking $g\ =\ f$, and hence $f(n)\ =\ g(n)$, the given function becomes $f\ =\ \Theta(f)$. \\
+	So, the condition becomes: $0\ \leq\ c_{1}f(n)\ \leq\ f(n)\ \leq\ c_{2}f(n)\ \forall\ n\ \geq\ n_{0}$, which is true \textbf{implicitly}.\\
+	$\therefore\ R_{\Theta}$ is reflexive.
+	\item Let $(f,g)\ \in\ R_{\Theta}$. \\
+	So, $\exists\ c_{1}, c_{2}, n_{0}\ \in\ \mathbb{R}^{+} $ such that $0\ \leq\ c_{1}g(n)\ \leq\ f(n)\ \leq\ c_{2}g(n)\ \forall\ n\ \geq\ n_{0} $
+\end{enumerate}
+\end{proof}
+\end{adjustwidth}
+\subsolution{}
+\subsolution{}
+\subsolution{}
+
+\setcounter{solution}{1}
+\solution{}
+\subsolution{}
+There exist infinite elements in $(0,1]$, as well as infinite elements in $[0,\infty]$. 
+\begin{adjustwidth}{0.9cm}{}
+So, we can form a bijection such that each element in $(0,1]$ has a unique image in $[0,\infty]$, and each image in $[0,\infty]$ has a pre-image in $(0,1]$. \\
+$\therefore$ There exists a bijection from $(0,1]$ to $[0,\infty]$.
+\end{adjustwidth}
+\subsolution{}
+\subsolution{}
+\subsolution{}
+$A,B$ are arbitrary sets. 
+\begin{adjustwidth}{0.9cm}{}
+$A$ has the same cardinality as $\mathbb{R}$. \\
+$B$ has the same cardinality as $\mathbb{N}$. \\
+Now, we know that $\mathbb{N}\ \subset\  \mathbb{R}$. \\
+Since $A,B$ are arbitrary, if we consider $A\ =\ \mathbb{R}$ and $B\ =\ \mathbb{N}$, we can say that $A\ \cup\ B\ =\ A$.
+So, cardinality of $A\ \cup\ B$ is same as that of $A$. \\
+$\therefore$ $A\ \cup\ B$ has the same cardinality as $R$.
+\end{adjustwidth}
+\subsolution{}
+Assuming $A,B$ as defined previously.
+\begin{adjustwidth}{0.9cm}{}
+If cardinality of $A$, $|A|\ =\ m$, and cardinality of $B$, $|B|\ =\ n$, where $m$ and $n$ tend to infinity, \\
+Cardinality of $A \times B$, $|A \times B|\ =\ 2^{mn}\ \rightarrow\ \infty$, since $m \rightarrow \infty$ and $n \rightarrow \infty$ \\
+$\therefore$, $A \times B$ has the same cardinality as ${\mathbb{R}}$
+\end{adjustwidth}
+
+
+\setcounter{solution}{2}
+\solution{}
+$f:\ A \longrightarrow\ B\ $is a function and $\sigma $ is an equivalence relation on $B$. \\
+$\rho $ on $A$ is defined as: $a\ \rho\ a^{\prime} \Leftrightarrow\ f(a)\ \sigma\ f(a^{\prime})$ 
+\subsolution{}
+$\sigma$ is an equivalence relation on $B$ 
+\begin{adjustwidth}{0.9cm}{}
+Let $a,a^{\prime}, a^{\prime\prime}\ \in\ A $ \\\\
+$\Longrightarrow\ \sigma$ is reflexive \\
+$\Longrightarrow\ f(a)\ \sigma\ f(a)$ \\
+$\Longrightarrow\ a\ \rho\ a\ $ (due to the definition of $\rho$) \\
+$\Longrightarrow\ \rho$ is reflexive. \\\\
+$\Longrightarrow\ \sigma\ $ is symmetric \\
+So, $f(a)\ \sigma\ f(a^{\prime}) \Rightarrow f(a^{\prime})\ \sigma\ f(a)$ \\
+$\Longrightarrow$ If $a\ \rho\ a^{\prime} \Rightarrow\ a^{\prime} \rho\ a$ (due to the definition of $\rho$) \\
+$\Longrightarrow\ \rho$ is symmetric \\\\
+$\Longrightarrow\ \sigma\ $ is transitive \\
+$\Longrightarrow\ (f(a)\ \sigma\ f(a^{\prime}))\  \wedge\ (f(a^{\prime})\ \sigma\ f(a^{\prime\prime}))\ \Rightarrow\ (f(a)\ \sigma\ f(a^{\prime\prime})) $ \\
+$\Longrightarrow\ (a\ \rho\ a^{\prime})\ \wedge\ (a^{\prime}\ \rho\ a^{\prime\prime})\ \Rightarrow\ (a\ \rho\ a^{\prime}) $ (due to the definition of $\rho$) \\
+$\Longrightarrow\ \rho$ is transitive \\\\
+$\therefore\ \rho$ is an equivalence relation
+\end{adjustwidth}
+\subsolution{}
+\subsolution{}
+If we take a $[b]_{\sigma}\ \in\ B/\sigma$, we have: 
+\begin{adjustwidth}{0.9cm}{}
+$b\ =\ f(a)$ for some $a\ \in\ A$ \\
+$\Longrightarrow\ \bar{f}([a]_{\rho})\ =\ [f(a)]_{\sigma}\ =\ [b]_{\sigma}$ (since $f$ is a bijection) \\
+$\Longrightarrow\ \bar{f}$ is bijective
+\end{adjustwidth}
+\subsolution{}
+
+\setcounter{solution}{3}
+\solution{}
+Relation $\rho$ is defined on $A\ =\ \mathbb{N}\ \times\ \mathbb{N}:\ (a,b)\ \rho\ (c,d)$ if $((a\ +\ b\ <\ c\ +\ d)\ \vee\ (a\ +\ b\ =\ c\ +\ d))\  \wedge\ (a\ \leq\ c)$ for $(a,b),(c,d)\ \in\ A$ \\
+\subsolution{}
+\begin{claim}
+$\rho$ is a partial order on $A$
+\end{claim}
+\begin{proof}
+We will have to prove that $\rho$ is \textit{reflexive}, \textit{antisymmetric} and \textit{transitive}.
+\begin{enumerate}
+	\item $\rho$ is \textit{reflexive} because if we take $c\ =\ a$ and $d\ =\ b$, then $a\ +\ b\ =\ c\ +\ d\ (=a\ +\ b)$ and $a\ \leq\ a$. \\
+	Hence, $(a,b)\ \rho\ (a,b)$ and hence, $\rho$ is \textit{reflexive}.
+	\item If $(a,b)\ \rho\ (c,d)$ and $(c,d)\ \rho\ (a,b)$, then \\
+	$a\ +\ b\ =\ c\ +\ d$ (since $a\ +\ b\ <\ c\ +\ d$ and $c\ +\ d\ <\ a\ +\ b$ can't be true simultaneously) \\
+	Also, $a\ =\ c$ (since, $a\ \leq\ c$ and $c\ \leq\ a$) \\
+	$\Longrightarrow\ a\ =\ c,\ b\ =\ d$ \\
+	$\Longrightarrow\ (a,b)\ =\ (c,d)$ \\
+	$\Longrightarrow\ \rho$ is \textit{antisymmetric}
+	\item If $(a,b)\ \rho\ (c,d)$ and $(c,d)\ \rho\ (e,f)$, then \\
+	$a\ +\ b\ \leq\ c\ +\ d$ and $a\ \leq\ c$, and \\
+	$c\ +\ d\ \leq\ e\ +\ f$ and $c\ \leq\ e$ \\
+	Combining these two, \\
+	 $a\ +\ b\ \leq\ e\ +\ f$ and $a\ \leq\ e$ \\
+	 $\Longrightarrow\ \rho$ is \textit{transitive}
+\end{enumerate}
+Since $\rho$ is \textit{reflexive}, \textit{antisymmetric} and \textit{transitive}, hence, $\rho$ is partial order on $A$.
+\end{proof}
+\subsolution{}
+\begin{claim}
+$\rho$ is total order on $A$
+\end{claim}
+\begin{proof}
+Let $(a,b),(c,d)\ \in\ A$, for some arbitrary $(a,b),\ (c,d)$ \\
+Since $a,b,c,d\ \in\ \mathbb{N}$, the following expression always evaluates to true: \\
+$((a\ +\ b\ <\ c\ +\ d)\ \vee\ (a\ +\ b\ =\ c\ +\ d))\  \wedge\ (a\ \leq\ c)$ \\
+$\therefore\ \rho$ is total order on $A$ 
+\end{proof}
+\subsolution{}
+\subsolution{}
+\begin{claim}
+An infinite subset of A may not contain a maximum element.
+\end{claim}
+\begin{proof}
+An infinite subset of $A$ will contain infinite natural numbers. \\
+Every element of the set may have a cover, since for any element $a\ \in\ A$, there may always be another element $a_{1}$, such that $a_{1}$ is a cover of the element $a$. \\
+$\therefore$ An infinite subset of $A$ may not contain a maximum element.
+\end{proof}
+
+
+
+\setcounter{solution}{4}
+\solution{}
+\subsolution{} 
+\textbf{To prove:} $\rho$ is both symmetric and antisymmetric if and only if $\rho \subseteq \{(a,a)\ |\ a \in A\}$ 
+\begin{adjustwidth}{0.9cm}{}
+In other words,\\
+\textbf{To prove:} $[\ \forall\ a,b\ :\ ((a,b)\ \in\ \rho\ \Rightarrow (b,a)\ \in \rho )]\ \wedge [\ \forall\ a,b\ :\ ((a,b)\ \in\ \rho\ \wedge\ (b,a)\ \in\ \rho\ \Rightarrow (a\ =\ b)) ]\ \Leftrightarrow \rho \subseteq \{(a,a)\ |\ a \in A\} $ \\
+\begin{claim}
+$\rho$ is symmetric and antisymmetric $ \Rightarrow \rho \subseteq \{(a,a)\ |\ a \in A\} $ 
+\end{claim} 
+\begin{proof}
+	Suppose $(a,b) \in \rho $ \\
+(Also, $ (a,b) \in \{ (a,b)\ |\ a \in A\}$) \\
+Since $\rho $ is symmetric, $(b,a) \in \rho$ \\
+Now, since $(a,b) \in \rho$ and $(b,a) \in \rho \Rightarrow (a = b)$ (because $\rho$ is antisymmetric) \\
+$\Longrightarrow\ (a,b) \in \{ (a,a)\ |\ a \in A\} $ \\
+$\Longrightarrow\ \rho \subseteq \{(a,a)\ |\ a \in A\}$ 
+\end{proof}
+\begin{claim}
+ $\rho \subseteq \{(a,a)\ |\ a \in A\} \Rightarrow$ $\rho$ is symmetric and antisymmetric
+\end{claim}
+\begin{proof}
+	Suppose $(a,b) \in \rho$ \\
+$\Longrightarrow\ (a,b) \in \{(a,a)\ |\ a \in A\} $ (since $\rho \subseteq \{(a,a)\ |\ a \in A\}$) \\
+$\Longrightarrow\ a\ =\ b$ \\
+$\Longrightarrow\ (a,b)\ =\ (b,a)$ \\
+$\Longrightarrow\ (b,a)\ \in \rho $ \\
+$\Longrightarrow\ \rho$ is symmetric \\
+$\Longrightarrow\ (a,b) \in\ \rho\ \wedge\ (b,a) \in\ \rho\ $ is True, and $(a\ =\ b)$ is True \\
+$\Longrightarrow\ \forall\ a,b\ :\ ((a,b)\ \in\ \rho\ \wedge\ (b,a)\ \in\ \rho\ \Rightarrow (a\ =\ b))$ is True \\
+$\Longrightarrow\ \rho$ is antisymmetric
+\end{proof} 
+Hence, proved that $\rho \subseteq \{(a,a)\ |\ a \in A\} \Leftrightarrow$ $\rho$ is symmetric and antisymmetric \\\\
+\end{adjustwidth}
+
+\subsolution{}
+\textbf{To prove:} $\rho$ is transitive if and only if $\rho\ \circ\ \rho\ \subseteq\ \rho$ \\
+\begin{adjustwidth}{0.9cm}{}
+Or, \\
+$\rho$ is transitive $\Leftrightarrow \rho\ \circ\ \rho\ \subseteq\ \rho$ \\
+\begin{claim}
+$\rho$ is transitive $\Rightarrow \rho\ \circ\ \rho\ \subseteq\ \rho$
+\end{claim}
+\begin{proof}
+	$\rho$ is transitive \\
+$\Longrightarrow\ \forall\ a,b,c:\ (a,b)\ \in\ \rho\ \wedge\ (b,c)\ in\ \rho\ \Rightarrow\ (a,c)\ \in\ \rho$ \\
+Now, for $a,c\ \in\ A$, let $(a,c)\ \in\ \rho\ \circ\ \rho$ \\
+$\Longrightarrow \rho\ \circ\ \rho:\ \{(a,c)\ |\ \exists\ b:\ (a,b) \in\ \rho\ \wedge\ (b,c)\ \in\ \rho \}$ \\
+Since $\rho$ is transitive, there exists $b\ \in\ A$ such that $(a,b) \in\ \rho\ \wedge\ (b,c)\ \in\ \rho $ \\
+$\Longrightarrow\ (a,c) \in\ \rho\ $ \\
+$\Longrightarrow\ \rho\ \circ\ \rho\ \subseteq\ \rho$
+\end{proof}
+\begin{claim}
+$\rho\ \circ\ \rho\ \subseteq\ \rho\ \Rightarrow\ $ $\rho $ is transitive
+\end{claim}
+\begin{proof}
+Suppose $(a,c)\ \in\ \rho\ \circ\ \rho\ $ \\
+$\Longrightarrow\ (a,c)\ \in\ \rho$ \\
+$\Longrightarrow\ \exists\ b\ \in\ A:\ (a,b)\ \in\ \rho\ \wedge\ (b,c)\ \in\ \rho$ \\
+$\Longrightarrow\ \rho\ $is transitive
+\end{proof}
+Hence, proved that $\rho$ is transitive $\Leftrightarrow \rho\ \circ\ \rho\ \subseteq\ \rho$ 
+\end{adjustwidth}
+\subsolution{}
+\subsolution{}
+
+
+\setcounter{solution}{5}
+\solution{}
+\subsolution{}
+\subsolution{}
+\subsolution{}
+
+ 
+\end{document}
