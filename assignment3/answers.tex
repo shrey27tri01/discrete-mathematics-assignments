@@ -1,0 +1,201 @@
+\documentclass[a4paper]{article}
+
+\usepackage[inner=2.0cm,outer=2.0cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage[colorlinks=true, urlcolor=red,  linkcolor=blue, citecolor=blue]{hyperref}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{comment}
+
+\setlength\parindent{0pt}
+\setlength\parskip{0.5em}
+
+% ==== Environments ====
+% It is recommended to not change the environment definitions.
+\newcounter{solution}
+\newcounter{subsolution}[solution]
+\newcommand{\solution}{\section*{Solution \stepcounter{solution}\arabic{solution}}}
+\newcommand{\subsolution}{\paragraph{(\protect\stepcounter{subsolution}\arabic{subsolution})}}
+\newtheorem{claim}{Claim}[solution]
+
+% ==== Custom Commands ====
+% It is recommended to not change the definitions of existing commands.
+\newcommand{\homeworktitle}[2]{\begin{center}
+    \framebox{\begin{minipage}{0.9\textwidth}
+        \textbf{CS 201: Discrete Mathematics} \hspace*{\fill} \today
+        \vspace{2mm}
+        \begin{center}
+            {\Large #2}
+        \end{center}
+        \vspace{2mm}
+        \textit{Instructor: {\rm Prof.\ Ashish Choudhury}} \hspace*{\fill} #1
+    \end{minipage}}
+\end{center}
+\vspace*{4mm}}
+
+% ==== Custom Math Commands ====
+% This is just to get you started. Feel free to update or add as per your convenience.
+\newcommand{\set}[1]{\ensuremath{\{ #1 \}}}
+\newcommand{\setsize}[1]{\ensuremath{| #1 |}}
+\newcommand{\powerset}[1]{\ensuremath{\mathcal{P}(#1)}}
+\newcommand{\sunn}{\ensuremath{\cup}} % set union
+\newcommand{\sint}{\ensuremath{\cap}} % set intersection
+\newcommand{\posintset}{\ensuremath{\mathbb{Z}^{+}}}
+\newcommand{\universalset}{\ensuremath{\mathcal{U}}}
+\newcommand{\ntrlleset}[1]{{\ensuremath{\mathbb{N}_{\le {#1}}}}}
+\newcommand{\funcdef}[3]{\ensuremath{{#1}: {#2} \rightarrow {#3}}}
+
+\begin{document}
+% Replace the name, rollnumber and title of the document.
+\homeworktitle{Shrey Tripathi (IMT2019084)}{Quiz 3}
+
+\begin{comment}
+\solution{}
+The \verb|\solution| command can be used to indicate the beginning of a solution to a new problem.
+
+\begin{claim}
+    Claims can be used for smaller, clearly defined results to improve the flow of the solution.
+\end{claim}
+\begin{proof}
+    As the name suggests, the proof environment is used for writing proofs for claims (and other theorem environments).
+\end{proof}
+
+\setcounter{solution}{3}
+\solution{}
+The solution numbering can be changed by using the \verb|\setcounter{solution}{<value>}| command.
+
+\solution{}
+\subsolution{} The \verb|\subsolution| command can be used for writing solutions to sub-problems.
+\end{comment}
+I hereby declare that the following solutions are a result of my own work, that no part of any of the solutions have been copied from any source on the Internet or any other student's submission, and that I have not allowed anyone to copy my work.
+
+
+\setcounter{solution}{0}
+\solution{}
+\subsolution{}
+\begin{claim}
+	If there are $n \geq 2$ indistinguishable items, such that $m$ of them are defective, and the remaining $n - m$ are functional, and $n \geq 3m - 2$, then the number of sequences where each pair of defective items is separated by at least $2$ functional items is $n - 2m + 2 \choose m$.
+\end{claim}
+\begin{proof}	
+	Since we have $m$ defective items, there are $m - 1$ spaces between them, and including the spaces before the first defective item and after the last defective item, we have a total of $m + 1$ spaces.\\
+	If we denote $x_{1}$ to be the number of functional items before the first defective item in then sequence, $x_{2}$ the number of functional items between the first and the second defective item, we have the arrangement as:
+	\begin{center}
+		$x_{1}Dx_{2}Dx_{3}...Dx_{m+1}$
+	\end{center}
+	where $D$ denotes the defective items.\\
+	According to the claim, $x_{1}, x_{m + 1} \geq 0$ and $x_{i} \geq 2$ where $2 \leq i \leq m$.\\
+	Also, since the total number of functional items is $n - m$, we have
+	\begin{equation}
+		x_{1} + x_{2} + ... + x_{m + 1} = n - m
+	\end{equation}
+	Now, since $x_{i} \geq 2$ for $2 \leq i \leq m$, if we consider $y_{i} \geq 0$ for $2 \leq i \leq m$, we can say that $y_{i} + 2 = x_{i}$.\\
+	So, equation (1) becomes:
+	\begin{equation}
+		x_{1} + y_{2} + y_{3} + ... + y_{m} + x_{m + 1} + 2(m - 1)= n - m
+	\end{equation}
+	where $x_{1}, x_{m + 1}, y_{i} \geq 0$ for $2 \leq i \leq m$\\
+	\begin{equation}
+		x_{1} + y_{2} + y_{3} + ... + y_{m} + x_{m + 1} = n - 3m + 2
+	\end{equation}
+	where $x_{1}, x_{m + 1}, y_{i} \geq 0$ for $2 \leq i \leq m$, and $n - 3m + 2 \geq 0$ since $n \geq 3m - 2$\\
+	The number of solutions of the equation (3) are:
+	\begin{center}
+		$(n - 3m + 2) + (m + 1) - 1 \choose (m + 1) - 1$ $=$ $n - 2m + 2 \choose m$
+	\end{center}
+	Hence, the number of sequences where each pair of defective items is separated by at least $2$ functional items is $n - 2m + 2 \choose m$.\\
+	Hence, proved.
+\end{proof}
+
+\subsolution{}
+\begin{claim}
+	If $r \geq 2$ and $n \geq 2r - 1$, then the number of sub-sequences of the form $(x_{1}, x_{2}, ..., x_{r})$ of the sequence $1, 2, 3, ..., n$ where $x_{i + 1} \geq x_{i} + 2$ for $i = 1, ..., r - 1$, is $n - r + 1 \choose r$
+\end{claim}
+\begin{proof}
+	Let us consider the sequence $a_{1}, a_{2}, ..., a_{r+1}$, where $a_{1}$ is the difference between $x_{1}$ and $1$, $a_{r + 1}$ is the difference between $x_{r}$ and $n$, and $a_{i}$ is the difference between $x_{i}$ and $x_{i - 1}$, for $2 \leq i \leq r$.\\
+	Here, $a_{1}, a_{r + 1} \geq 0$ and $a_{i} \geq 2$ for $2 \leq i \leq r$.\\
+	Since the numbers $x_{1}, x_{2}, ..., x_{r}$ have been taken from $1, 2, ..., n$, we can say that $a_{1} + a_{2} + ... + a_{r + 1} = n - 1$
+	Hence,
+	\begin{equation}
+		a_{1} + a_{2} + ... + a_{r + 1} = n - 1
+	\end{equation}
+	where $a_{1}, a_{r + 1} \geq 0$ and $a_{i} \geq 2$ for $2 \leq i \leq r$\\
+	Now, since $a_{i} \geq 2$ for $2 \leq i \leq r$, if we consider $y_{i} \geq 0$ for $2 \leq i \leq r$, we can say that $y_{i} + 2 = a_{i}$\\
+	So, equation (4) becomes:
+	\begin{equation}
+		a_{1} + y_{1} + y_{2} + ... + y_{r} + a_{r + 1} + 2(r - 1) = n - 1
+	\end{equation}
+	where $a_{1}, a_{r + 1},y_{i} \geq 0$ for $2 \leq i \leq r$
+	\begin{equation}
+		a_{1} + y_{1} + y_{2} + ... + y_{r} + a_{r + 1} = n - 2r + 1
+	\end{equation}
+	where $a_{1}, a_{r + 1},y_{i} \geq 0$ for $2 \leq i \leq r$ and $n - 2r + 1 \geq 0$ since $n \geq 2r - 1$ \\
+	The number of solutions of the equation (6) are:
+	\begin{center}
+		$(n - 2r + 1) + (r + 1) - 1 \choose (r + 1) - 1$ $=$ $n - r + 1 \choose r$
+	\end{center}
+	Hence, the number of sub-sequences of the form $(x_{1}, x_{2}, ..., x_{r})$ of the sequence $1, 2, 3, ..., n$ where $x_{i + 1} \geq x_{i} + 2$ for $i = 1, ..., r - 1$, is $n - r + 1 \choose r$.\\
+	Hence, proved
+	
+\end{proof}
+
+
+
+\setcounter{solution}{1}
+\solution{}
+\subsolution{}
+\begin{claim}
+	$\sum_{i=0}^{n} i^{2} {n \choose i} = n (n - 1)2^{n - 2} + n2^{n - 1} $
+\end{claim}
+\begin{proof}
+	Let us consider the question: \textbf{Find the number of ways of choosing $2$ elements from a subset of a set $S$ of $n$ elements}.\\
+	One way to solve this is to first select a subset of $i$ elements from the set $S$ and then select $2$ elements (repetition allowed) from the subset.\\
+	Selecting a subset of $i$ elements from the set $S$ can be done in ${ n \choose i}$ ways and then selecting $2$ elements from this subset with repetition allowed can be done in $i^2$ ways.\\
+	So, selecting $2$ elements from a subset of $i$ elements from $S$ can be done in $i^2 {n \choose i}$ ways. Summing this from $i = 0$ to $i = n$, we get $\sum_{i=0}^{n} i^{2} {n \choose i}$, which is the number of ways of choosing $2$ elements rom a subset of a set $S$ of $n$ elements. This is the LHS of the given equation.\\\\
+	Another way to find the number of ways of choosing $2$ elements from a subset of a set $S$ of $n$ elements is to first select $2$ elements from the set $S$ and then complete the subset.This can be done in $2$ ways:
+	\begin{itemize}
+		\item \textit{The two elements we pick from $S$ are distinct}: When the $2$ elements are distinct, the first element can be chosen in $n$ ways and the second element can be chosen in $n - 1$ ways. So the $2$ elements can be chosen in $n (n - 1)$ ways. We now have to choose the rest of the elements of the subset from the remaining $n - 2$ elements of $S$. By the product rule, we can either choose an element or not choose it. So this gives us the number of ways of selecting the remaining elements for the subset in $2^{n-2}$ ways.\\
+		Hence, we can choose $2$ elements from a subset of $S$ if both are distinct, in $n (n - 1) 2^{n - 2}$ ways.
+		\item \textit{The two elements we pick from $S$ are the same}: When the $2$ elements are same, they can be chosen from $S$ in $n$ ways. We can now select the remaining elements for the subset from the remaining $n - 1$ elements in $2^{n - 1}$ ways, since we can either choose an element or not choose it.\\
+		Hence, we can choose $2$ elements from a subset of $S$ if both are the same, in $n 2^{n - 1}$ ways.
+	\end{itemize}
+	So, from the above two cases, by the sum rule, we can find the number of ways of choosing $2$ elements from a subset of a set $S$ of $n$ elements in $n (n - 1)2^{n - 2} + n2^{n - 1} $ ways. This is the RHS of the given equation.\\
+	Hence, since both LHS and RHS answer the same question, they must be equal. So, 
+	\begin{equation}
+		\sum_{i=0}^{n} i^{2} {n \choose i} = n (n - 1)2^{n - 2} + n2^{n - 1} 
+	\end{equation}
+	Hence, proved.
+\end{proof}
+
+\subsolution{}
+\begin{claim}
+$
+	\sum_{i=0}^{n} (-1)^{i} {n \choose i} {m + n - i \choose k - i} =
+	\begin{cases}
+		m \choose k & k \leq m \\
+		0 & k > m
+	\end{cases}	
+$	
+\end{claim}
+\begin{proof}
+
+\end{proof}
+
+
+\setcounter{solution}{2}
+\solution{}
+\begin{claim}
+	If $x, y$ are two positive integers such that $2 \leq x < y$ and $x$ and $y$ are co-primes, then for any integer $n \geq (x - 1)(y - 1)$, there exists $a, b \in \mathbb{N} \cup \{0\}$ such that $n = ax + by$
+\end{claim}
+\begin{proof}
+	
+\end{proof}
+
+\setcounter{solution}{3}
+\solution{}
+
+\setcounter{solution}{4}
+\solution{}
+
+\end{document}
