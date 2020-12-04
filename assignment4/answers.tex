@@ -1,0 +1,190 @@
+\documentclass[a4paper]{article}
+
+\usepackage[inner=2.0cm,outer=2.0cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage[colorlinks=true, urlcolor=red,  linkcolor=blue, citecolor=blue]{hyperref}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{comment}
+\usepackage{mathtools}
+
+\setlength\parindent{0pt}
+\setlength\parskip{0.5em}
+
+% ==== Environments ====
+% It is recommended to not change the environment definitions.
+\newcounter{solution}
+\newcounter{subsolution}[solution]
+\newcommand{\solution}{\section*{Solution \stepcounter{solution}\arabic{solution}}}
+\newcommand{\subsolution}{\paragraph{(\protect\stepcounter{subsolution}\arabic{subsolution})}}
+\newtheorem{claim}{Claim}[solution]
+
+% ==== Custom Commands ====
+% It is recommended to not change the definitions of existing commands.
+\newcommand{\homeworktitle}[2]{\begin{center}
+    \framebox{\begin{minipage}{0.9\textwidth}
+        \textbf{CS 201: Discrete Mathematics} \hspace*{\fill} \today
+        \vspace{2mm}
+        \begin{center}
+            {\Large #2}
+        \end{center}
+        \vspace{2mm}
+        \textit{Instructor: {\rm Prof.\ Ashish Choudhury}} \hspace*{\fill} #1
+    \end{minipage}}
+\end{center}
+\vspace*{4mm}}
+
+% ==== Custom Math Commands ====
+% This is just to get you started. Feel free to update or add as per your convenience.
+\newcommand{\set}[1]{\ensuremath{\{ #1 \}}}
+\newcommand{\setsize}[1]{\ensuremath{| #1 |}}
+\newcommand{\powerset}[1]{\ensuremath{\mathcal{P}(#1)}}
+\newcommand{\posintset}{\ensuremath{\mathbb{Z}^{+}}}
+\newcommand{\universalset}{\ensuremath{\mathcal{U}}}
+\newcommand{\ntrlleset}[1]{{\ensuremath{\mathbb{N}_{\le {#1}}}}}
+\newcommand{\funcdef}[3]{\ensuremath{{#1}: {#2} \rightarrow {#3}}}
+
+\begin{document}
+% Replace the name, rollnumber and title of the document.
+\homeworktitle{Shrey Tripathi (IMT2019084)}{Quiz 4}
+
+\begin{comment}
+
+\solution{}
+The \verb|\solution| command can be used to indicate the beginning of a solution to a new problem.
+
+\begin{claim}
+    Claims can be used for smaller, clearly defined results to improve the flow of the solution.
+\end{claim}
+\begin{proof}
+    As the name suggests, the proof environment is used for writing proofs for claims (and other theorem environments).
+\end{proof}
+
+\setcounter{solution}{3}
+\solution{}
+The solution numbering can be changed by using the \verb|\setcounter{solution}{<value>}| command.
+
+\solution{}
+\subsolution{} The \verb|\subsolution| command can be used for writing solutions to sub-problems.
+
+\end{comment}
+
+I hereby declare that the following solutions are a result of my own work, that no part of any of the solutions have been copied from any source on the Internet or any other student's submission, and that I have not allowed anyone to copy my work. 
+
+\solution{}
+\begin{claim}
+	If $G$ is a bipartite graph with bipartition $(A, B)$, and has a matching $M$ such that every vertex $u \in A$ is matched with respect to $M$, then there exists a vertex $v \in A$ such that every edge incident to $v$ belongs to a maximum matching.
+\end{claim}
+\begin{proof}
+	Since every vertex $u \in A$ is matched with respect to $M$, we can say that \textbf{$M$ is a complete matching from $A$ to $B$}. \\
+	Now, according to \textbf{Hall's Marriage Thorem}, $M$ can be a complete matching from $A$ to $B$ if and only if $|N(S)| \geq |S|,$ for all $S \subseteq A$\\
+	Now, let there be an edge $(u, v)$ of the graph $G$, such that $u \in A$ and $v \in B$\\
+	If we now delete this edge from the graph $G$, we will have the new set $A'$ from $A$ where $A' = A - \{u\}$\\
+	Now, for all $S' \subseteq A'$ in the reduced graph, we have, from the inequation above:
+	\begin{equation}
+		|N(S')| \geq |N(S)| \geq |S|		
+	\end{equation}
+	Applying the \textbf{Hall's Marriage Thorem} again, we find that there exists a vertex $v \in A$ such that every edge incident to $v$ belongs to a maximum matching.
+\end{proof}
+
+\solution{}
+\subsolution{}
+\begin{claim}
+	Two maximal k-connected subgraphs of a graph G have at most k - 1 common vertices.
+\end{claim}
+\begin{proof}
+	A \textit{maximal k-connected subgraph} of $G$ is a $k$-connected subgraph of $G$ which is not a proper sub-graph of another $k$-connected subgraph of $G$.\\
+	Let $H$ and $H'$ be two maximal $k$-connected subgraphs of a graph $G$.\\
+	Let us assume that $H$ and $H'$ have $\geq k$ common vertices.\\
+	Now, suppose $A$ is a set of $k - 1$ vertices from the set $H \cup H'$.\\
+	Now, if we remove the vertices of $A$ from those of $H$, $H$ would still remain connected, i.e. $H - A$ remains connected, because the minimum number of vertices to be removed from $H$ to make it disconnected is $k$ (since $H$ is $k$-connected), but we are only removing $k - 1$ vertices from $H$.\\
+	Similarly, $H' - A$ remains connected.\\
+	$\implies$ $H \cup H'$ remains connected even after removing $k - 1$ vertices\\
+	$\implies$ $H \cup H'$ is $k$-connected\\
+	But this contradicts the fact that $H$ and $H'$ are maximal $k$-connected subgraphs of $G$.\\
+	Hence, our assumption that $H$ and $H'$ have $\geq k$ common vertices was wrong.\\
+	Hence, $H$ and $H'$ have at most $k - 1$ common vertices.\\
+	Hence, proved that two maximal $k$-connected subgraphs of a graph $G$ have at most $k - 1$ common vertices.
+\end{proof}
+
+\subsolution{}
+\begin{claim}
+	In a simple graph $G$ satisfying $|E| \geq$ $n - 1 \choose 2$ $+\ 3$, for every pair of vertices $u, v$, there exists a Hamiltonian path from $u$ to $v$.
+\end{claim}
+\begin{proof}
+	There arise two cases for $u$ and $v$:
+	\begin{enumerate}
+		\item \textbf{$u$ and $v$ are adjacent}: If $u$ and $v$ are adjacent, the edge $(u, v) \in E$ makes up the simple path such that $u$ and $v$ are only traversed once. So, the edge $(u, v)$ is the Hamiltonian path from $u$ to $v$.\\
+		Hence, the claim has been proved in this case.
+		\item \textbf{$u$ and $v$ are not adjacent}: If $u$ and $v$ are not adjacent, we first find the value of $deg(u) + deg(v)$.\\
+		Essentially, $deg(u) + deg(v)$ denotes the number of edges that will be subtracted from the total number of edges in $G$ if the two vertices $u$ and $v$ are deleted from $G$.
+		So, if $|E|$ denotes the number of edges in $G$ and $|E(G - \{u, v\})|$ denotes the number of edges in the reduced graph after deleting $u$ and $v$, we have:
+		\begin{equation}
+			|E| = (deg(u) + deg(v)) + |E(G - \{u, v\})| 
+		\end{equation}
+		Here, $|E(G - \{u, v\})|$ can be described as the number of edges in a graph with $n - 2$ vertices (since $u$ and $v$ are deleted).\\
+		So, $|E(G - \{u, v\})| \geq$ $n - 2 \choose 2$\\\\
+		Also, given: $|E| \geq$ $n - 1 \choose 2$ $+\ 3$\\
+		Combining these with equation (3), we get:
+		\begin{equation}
+			deg(u) + deg(v) \geq ({n - 1 \choose 2} + 3) - {n - 2 \choose 2}
+		\end{equation}
+		Or,
+		\begin{equation}
+			deg(u) + deg(v) \geq n + 1
+		\end{equation}
+		Or,
+		\begin{equation}
+			deg(u) + deg(v) \geq n
+		\end{equation}
+		Which implies, according to \textbf{Ore's theorem}, that there exists a Hamiltonian path from $u$ to $v$ in $G$.\\
+		Hence, the claim has been proved in this case, too.
+	\end{enumerate}
+	Hence, proved.
+\end{proof}
+
+\solution{}
+$n \geq k(k + 1)$ points are placed on a circle. $G_{n, k}$ is the graph obtained by joining each point to the $k$ nearest points in each direction on the circle.
+\subsolution{}
+\begin{claim}
+	$ 
+		\chi _{0}(G_{n, k}) = 
+		\begin{dcases*}
+		\text{k + 1} & if $k + 1$ divides $n$ \\
+		\text{k + 2} & otherwise 	
+		\end{dcases*}
+	$
+\end{claim}
+\begin{proof}
+	If we join each point to the $k$ nearest points in each direction, we will find that each set of $k + 1$ consecutive points (each point along with the $k$ nearest points in one direction) is a complete graph.\\
+	Now, we know that the chromatic number for a complete graph $K_{n}$ is $\chi _{0}(K_{n}) = n$\\
+	Hence, for each set of $k + 1$ consecutive points, $\chi _{0}(K_{k+1}) = k + 1$\\
+	$\implies$ For each set of $k + 1$ points, a minimum of $k + 1$ colors are needed for the coloring of the set.\\
+	Hence, the coloring of the graph $G$ can be defined as:\\
+	$C_{1}, C_{2}, C_{3}, ..., C_{k}, C_{k + 1}, C_{1}, C_{2}, ..., C_{k}, C_{k + 1}, ........., C_{1}, C_{2}, ..., C_{k}, C_{k + 1}$\\
+	Here, $C_{i}$ denotes a color $i$, and all colors $C_{1}, C_{2}, C_{3}, ..., C_{k}, C_{k + 1}$ are different. Also, after the last color $C_{k + 1}$, we go back to the first point with color $C_{1}$, because the points are on a circle. And obviously, this sequence of coloring is only possible if the number of points is a multiple of $k + 1$.\\
+	This shows that only $k + 1$ colors are needed for the coloring of the graph $G$ if $k + 1$ divides $n$.\\\\
+	If $k + 1$ does not divide $n$, then the sequence of colors will be as follows:\\
+	$C_{1}, C_{2}, C_{3}, ..., C_{k}, C_{k + 1}, C_{1}, C_{2}, ..., C_{k}, C_{k + 1}, ........., C_{1}, C_{2}, ..., C_{k}, C_{k + 1}, C_{k + 2}$, or\\
+	$C_{1}, C_{2}, C_{3}, ..., C_{k}, C_{k + 1}, C_{1}, C_{2}, ..., C_{k}, C_{k + 1}, ........., C_{1}, C_{2}, ..., C_{k}, C_{k + 1}, C_{k + 2}, C_{k - 1}$\\
+	This is because if the last color is $C_{1}$ or $C_{k + 1}$, the property of graph coloring will no longer be followed.\\
+	Hence, $k + 2$ colors are needed for the coloring of the graph $G$ if $k + 1$ does not divide $n$.
+ \end{proof}
+
+\subsolution{}
+\begin{claim}
+$\chi _{0}(G_{k(k+1) - 1,\ k}) > k + 2$, if $k \geq 2$
+\end{claim}
+\begin{proof}
+	There are $k(k + 1) - 1$ points in the graph.\\
+	Now let us assume that we have $k + 2$ colors to color the graph.\\
+	If we use $k + 2$ colors, there wouldn't be sufficient colors to color all the vertices with different colors. Hence, we would have to use one color atleast $k^{2} - 3$ times (since $k(k + 1) - 1 - (k + 2) = k^{2} - 3$).\\
+	Now, since total number of points is $k(k + 1)$, the number of points between two consecutive occurences of this color is not feasible for the case of a colored graph.\\
+	If we take number of colors to be less than $k + 2$, that will not help at all, it will only become tougher to color the graph.\\
+	Hence, the number of colors required to color the graph with $k(k + 1) - 1$ points is $> k + 2$.\\
+	Hence, proved.
+\end{proof}
+
+\end{document}
